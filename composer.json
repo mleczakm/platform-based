@@ -12,9 +12,17 @@
       "email": "kontakt@michalmleczko.waw.pl"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "PlatformInstaller\\": "src/PlatformInstaller"
+    }
+  },
   "require": {
     "php": ">=5.3.0",
     "lib-curl": "*",
     "ext-zip": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
   }
 }
