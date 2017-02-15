@@ -1,0 +1,20 @@
+{
+  "name": "mleczakm/platform-installer",
+  "keywords": [
+    "platform",
+    "installer",
+    "package"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Michał Mleczko",
+      "email": "kontakt@michalmleczko.waw.pl"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "lib-curl": "*",
+    "ext-zip": "*"
+  }
+}
