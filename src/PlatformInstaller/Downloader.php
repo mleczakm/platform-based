@@ -7,6 +7,7 @@
  */
 
 namespace PlatformInstaller;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Class Downloader
@@ -15,14 +16,14 @@ namespace PlatformInstaller;
 class Downloader
 {
     /**
-     * @var HttpRequestInterface
+     * @var
      */
-    private $httpRequest;
+    private $httpClient;
 
-    public function __construct(HttpRequestInterface $httpRequest)
+    public function __construct(ClientInterface $httpClient)
     {
 
-        $this->httpRequest = $httpRequest;
+        $this->httpClient = $httpClient;
     }
 
     /**
@@ -34,12 +35,7 @@ class Downloader
     {
         $parsedUrl = parse_url($url);
         $filename = basename($parsedUrl['path']);
-
-        $data = $this->httpRequest->get($url);
-        $error = $this->httpRequest->getLastError();
-
-        if($error)
-            throw new \Exception($error);
+        $data = (string) $this->httpClient->request('GET', $url)->getBody();
 
         $file = fopen($destination . DIRECTORY_SEPARATOR . $filename, "w+");
         fputs($file, $data);

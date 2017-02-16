@@ -14,8 +14,10 @@ class DownloaderTest extends TestCase
      */
     public function downloadsExampleFileAndPutsToDestinationDirectory()
     {
-        $httpRequestMock = $this->createMock('PlatformInstaller\HttpRequestInterface');
-        $httpRequestMock->method('get')->willReturn('exampleZipArchiveContent');
+        $httpRequestMock = $this->createMock('GuzzleHttp\ClientInterface');
+        $httpResponseMock = $this->createMock('\GuzzleHttp\Psr7\Response');
+        $httpResponseMock->method('getBody')->willReturn('exampleZipArchiveContent');
+        $httpRequestMock->method('request')->willReturn($httpResponseMock);
 
         $downloader = new \PlatformInstaller\Downloader($httpRequestMock);
 
