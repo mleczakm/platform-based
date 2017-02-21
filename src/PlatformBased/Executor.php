@@ -14,9 +14,7 @@ class Executor
     public function execute($command, $arguments = '')
     {
 
-        exec($command . " " . $arguments, $output, $returnValue);
-
-        echo implode("\n", $output);
+        passthru($command . " " . $arguments, $returnValue);
 
         return $returnValue;
     }
