@@ -6,12 +6,12 @@
  * Time: 21:03
  */
 
-namespace PlatformInstaller;
+namespace mleczakm\PlatformBased;
 
 
 /**
  * Class UnZipper
- * @package PlatformInstaller
+ * @package PlatformBased
  */
 class UnZipper
 {

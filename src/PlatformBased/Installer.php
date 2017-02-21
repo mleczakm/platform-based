@@ -6,7 +6,7 @@
  * Time: 20:59
  */
 
-namespace PlatformInstaller;
+namespace mleczakm\PlatformBased;
 
 
 use Sinergi\BrowserDetector\Os;
@@ -14,7 +14,7 @@ use Sinergi\BrowserDetector\Os;
 
 /**
  * Class Installer
- * @package PlatformInstaller
+ * @package PlatformBased
  */
 class Installer
 {
@@ -39,10 +39,10 @@ class Installer
      * Installer constructor.
      * @param Downloader $downloader
      * @param UnZipper $unZipper
-     * @param Os $operationSystem
+     * @param string $operationSystem
      * @param string $tempDirectory
      */
-    public function __construct(Downloader $downloader, UnZipper $unZipper, Os $operationSystem, $tempDirectory)
+    public function __construct(Downloader $downloader, UnZipper $unZipper, $tempDirectory = __DIR__, $operationSystem = PHP_OS )
     {
 
         $this->downloader = $downloader;
@@ -58,21 +58,21 @@ class Installer
      */
     public function installPackage(array $sources, $destination)
     {
-        $actualOs = $this->operationSystem->getName();
+        $actualOs = $this->operationSystem;
 
         if(!isset($sources[$actualOs]))
             throw new \Exception(sprintf('Source for OS "%s" not defined!', $actualOs));
 
         $architecture = strlen(decbin(~0));
 
-        if(isset($source[$actualOs][$architecture]))
-            $source = $sources[$actualOs][$architecture];
-        elseif (isset($source[$actualOs]['32']))
-            $source = $source[$actualOs]['32'];
-        elseif (isset($source[$actualOs]['all']))
-            $source = $source[$actualOs]['all'];
-        elseif (is_string($source[$actualOs]))
-            $source = $source[$actualOs];
+        if(isset($sources[$actualOs][$architecture]))
+            $source = $sources[$actualOs][(string) $architecture];
+        elseif (isset($sources[$actualOs]['32']))
+            $source = $sources[$actualOs]['32'];
+        elseif (isset($sources[$actualOs]['all']))
+            $source = $sources[$actualOs]['all'];
+        elseif (is_string($sources[$actualOs]))
+            $source = $sources[$actualOs];
         else
             throw new \Exception(sprintf(
                 'Source for OS "%s" and architecture %s or compatible not found!',

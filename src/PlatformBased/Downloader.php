@@ -6,12 +6,12 @@
  * Time: 20:59
  */
 
-namespace PlatformInstaller;
+namespace mleczakm\PlatformBased;
 use GuzzleHttp\ClientInterface;
 
 /**
  * Class Downloader
- * @package PlatformInstaller
+ * @package PlatformBased
  */
 class Downloader
 {

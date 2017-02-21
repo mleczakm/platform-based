@@ -19,7 +19,7 @@ class DownloaderTest extends TestCase
         $httpResponseMock->method('getBody')->willReturn('exampleZipArchiveContent');
         $httpRequestMock->method('request')->willReturn($httpResponseMock);
 
-        $downloader = new \PlatformInstaller\Downloader($httpRequestMock);
+        $downloader = new \mleczakm\PlatformBased\Downloader($httpRequestMock);
 
         $downloader->download('filename.zip', '.');
 
