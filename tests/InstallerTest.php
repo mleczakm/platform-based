@@ -30,7 +30,8 @@ class InstallerTest extends TestCase
 
         $installer->installPackage(
             array(
-                'LINUX' => array('64' => 'http://downloads.pulpo18.com/1.1.0.47/Pulpo-1.1.0.47-Linux-all-64bit.zip')),
+                'linux' => array('64' => 'http://downloads.pulpo18.com/1.1.0.47/Pulpo-1.1.0.47-Linux-all-64bit.zip')
+            ),
             '/tmp' . DIRECTORY_SEPARATOR . $dirName
         );
 

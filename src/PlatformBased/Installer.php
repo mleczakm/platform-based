@@ -8,10 +8,6 @@
 
 namespace mleczakm\PlatformBased;
 
-
-use Sinergi\BrowserDetector\Os;
-
-
 /**
  * Class Installer
  * @package PlatformBased
@@ -31,7 +27,7 @@ class Installer
      */
     private $tempDirectory;
     /**
-     * @var Os
+     * @var string
      */
     private $operationSystem;
 
@@ -48,7 +44,7 @@ class Installer
         $this->downloader = $downloader;
         $this->unZipper = $unZipper;
         $this->tempDirectory = $tempDirectory;
-        $this->operationSystem = $operationSystem;
+        $this->operationSystem = strtolower($operationSystem);
     }
 
     /**
